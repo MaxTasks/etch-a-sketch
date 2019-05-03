@@ -1,0 +1,16 @@
+div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+header {
+    display: flex;
+}
+
+body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+

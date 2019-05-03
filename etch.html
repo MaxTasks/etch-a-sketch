@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+    <header>
+        <h1>ETCH-A-SKETCH</h1>
+    </header>
+    <container id='container'>
+
+    </container>
+    <div class='clickMe'>
+        <button id='reset' type='button'>RESET!</button>
+        <input type='color' id='newColor'>
+    </div>
+</body>
+
+
+
+
+<script>
+
+
+    let newColor = document.querySelector('#newColor');
+
+    newColor.addEventListener('change', function(){newCol(this.value);});
+
+    function newCol(x) {
+        colorNew = x;
+    }
+
+        
+    document.getElementById('reset').addEventListener('click', reset);
+    
+
+    function reset() {
+        const divs = document.querySelectorAll('div');
+        divs.forEach((div) => {
+            div.style.backgroundColor = 'white';
+            return;
+        })
+
+        let wChoice = prompt('How many squares wide would you like the grid?');
+        let hChoice = prompt('How many squares tall would you like the grid?');
+        
+        var myNode = document.getElementById('container');
+        while (myNode.hasChildNodes()) {
+            myNode.removeChild(myNode.firstChild);
+        }
+
+        buildGrid(wChoice, hChoice);
+
+    }
+
+
+    function buildGrid(w, h) {
+        for (let x = 0; x < w; x++) {
+            for (let i = 0; i < h; i++) {
+                let grid = document.createElement('div');
+                    grid.style.width = 1000 / w + 'px';
+                    grid.style.height = 1000 / h +'px';
+                    grid.style.border = '1px solid black';
+                    let cLass = x.toString() + 0 + i.toString();
+                    grid.id = (cLass);
+                    grid.addEventListener('mouseover', function(){changeColor(cLass);});
+
+                document.getElementById('container').appendChild(grid);
+
+            }
+            let br = document.createElement('br');
+            document.getElementById('container').appendChild(br)
+        }
+    }
+
+    function changeColor(thanks) {
+        document.getElementById(thanks).style.backgroundColor = colorNew;
+        return;
+    }
+    
+    let colorNew = 'yellow';
+
+
+
+
+
+</script>
